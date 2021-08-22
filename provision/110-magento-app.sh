@@ -13,6 +13,7 @@ echo '--- Magento installation sequence ---'
 
 # Prepare directory
 DIRECTORY_BUILD="/home/vagrant"
+DIRECTORY_BUILD_TMP="/home/vagrant/tmp"
 if [ "$PROJECT_MOUNT_PATH" == "app" ]; then
 	DIRECTORY_BUILD="/tmp"
 fi
@@ -20,13 +21,16 @@ PROJECT_BUILD="$DIRECTORY_BUILD/$PROJECT_NAME"
 rm -rf "$PROJECT_BUILD" &> /dev/null
 chmod -R 777 /tmp
 mkdir -p "$PROJECT_BUILD"
+mkdir -p "$DIRECTORY_BUILD_TMP"
 chown -fR vagrant:vagrant "$PROJECT_BUILD"
+chown -fR vagrant:vagrant "$DIRECTORY_BUILD_TMP"
 
 # Get installation files from source
 if [ "$PROJECT_SOURCE" == "composer" ]; then
 	# Install from magento
 	sudo -u vagrant composer create-project --no-interaction --no-install --no-progress \
-		--repository=https://repo.magento.com/ magento/project-"$PROJECT_EDITION"-edition="$PROJECT_VERSION" "$PROJECT_NAME" -d "$DIRECTORY_BUILD"
+		--repository=https://repo.magento.com/ magento/project-"$PROJECT_EDITION"-edition="$PROJECT_VERSION" "$PROJECT_NAME" -d "$DIRECTORY_BUILD_TMP"
+	sudo cp -rf "$DIRECTORY_BUILD_TMP/." "$DIRECTORY_BUILD"
 else
 	# Install from git
 	sudo -u vagrant git clone "$PROJECT_REPOSITORY" "$PROJECT_BUILD"
