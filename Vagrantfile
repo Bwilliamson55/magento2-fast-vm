@@ -104,6 +104,7 @@ Vagrant.configure(2) do |config|
 
   # Extra provision
   process_extra_file(config, 'extra/001-env.sh')
+  process_extra_file(config, 'extra/010-system-packs.sh')
   process_extra_file(config, 'extra/100-pre-build.sh')
   process_extra_file(config, 'extra/120-post-build.sh')
 
@@ -118,7 +119,8 @@ Vagrant.configure(2) do |config|
     git['name'], git['email'], git['host'], git['repository'],
     magento['url'], magento['php_version'], magento['source'], magento['edition'],
     magento['version'], magento['sample'], magento['mode'], magento['currency'],
-    magento['language'], magento['time_zone'], magento['crypt_key'], vmconf['mount'], vmconf['path']
+    magento['language'], magento['time_zone'], magento['crypt_key'], vmconf['mount'], vmconf['path'],
+    magento['debug_idekey']
   ]
 
   # Shell provisioning

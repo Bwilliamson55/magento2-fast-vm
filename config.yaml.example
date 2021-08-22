@@ -1,9 +1,9 @@
 vmconf:
   machine_name: 'Vagrant Magento 2'
   network_ip: '192.168.200.50'
-  host_name: 'zepgram'
+  host_name: 'magento-2.test'
   memory: '4096'
-  cpus: '1'
+  cpus: '2'
   mount: 'nfs'
   path: 'root'
   provision: 'all'
@@ -15,11 +15,14 @@ git:
   email: 'john@doe.com'
   host: 'github.com'
   repository: 'ssh://git@github.com:project-name.git'
+  # For bitbucket:
+  # host: 'bitbucket.org' 
+  #repository: 'git@bitbucket.org:{user}/{reponame}.git'
 magento:
-  url: 'dev.magento.com'
+  url: 'magento-2.test'
   source: 'composer'
   edition: 'community'
-  version: '2.4.2'
+  version: '2.4.3'
   php_version: 'default'
   sample: 'true'
   mode: 'developer'
@@ -27,3 +30,4 @@ magento:
   language: 'en_US'
   time_zone: 'America/New_York'
   crypt_key: ''
+  debug_idekey: 'phpstorm'
