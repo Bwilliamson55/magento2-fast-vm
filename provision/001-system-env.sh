@@ -51,6 +51,7 @@ export PROJECT_TIME_ZONE="${17}"
 export PROJECT_CRYPT_KEY="${18}"
 export PROJECT_MOUNT="${19}"
 export PROJECT_MOUNT_PATH="${20}"
+export DEBUG_IDEKEY="${21}"
 EOF
 source /etc/profile.d/env.sh
 

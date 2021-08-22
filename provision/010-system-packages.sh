@@ -112,5 +112,10 @@ chmod +x /usr/local/bin/magento-cloud
 curl -o /etc/bash_completion.d/magento2-bash-completion https://raw.githubusercontent.com/yvoronoy/magento2-bash-completion/master/magento2-bash-completion
 source /etc/bash_completion.d/magento2-bash-completion
 
+# Extra packs
+if [ -f /home/vagrant/extra/010-system-packs.sh ]; then
+  bash /home/vagrant/extra/010-system-packs.sh
+fi
+
 # Clean
 apt-get -y upgrade && apt-get -y clean autoclean && apt-get -y autoremove
