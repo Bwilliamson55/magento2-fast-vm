@@ -1,3 +1,34 @@
+# Bwilliamson Additions
+
+So far:
+- Xdebug V3 with configuration
+- SchemaCrawler w/ example script
+- ~/.bashrc profile with handy tools for Magento work
+
+I've also updated the config example a little, to help those of us with bitbucket.  
+
+TLDR for using this vagrant pack (The orignal repo readme is thorough):  
+1. Get an [adobe marketplace account]([https://link](https://account.magento.com/applications/customer/create/)), and get your [keys](https://marketplace.magento.com/customer/accessKeys/).
+   1. The public key is your 'username' and the private is your password, for this config
+   2. This assumes you're installing via composer.
+2. Copy the config.yaml.example- rename it config.yaml and fill it in with your details. 
+3. Satisfy your pre-reqs i.e. vagrant, composer, virtualbox
+4. CD to your project directory (Where all this junk is) and `vagrant up`
+   1. ~20 minutes later you should have a working dev VM
+      1. Details for logins etc are echoed at the end if everything went ok.
+   2. Subsequent `vagrant up` commands will launch the VM much faster.
+   3. `vagrant halt` will shut down the VM.`vagrant destroy` will delete it. `vagrant ssh` will automatically log you into an SSH session on the machine, as the vagrant user, in the project directory.
+
+I highly recommend if you're on windows to stick with 'app' provisioning, not 'root'. NFS by default kills performance. Instead use an SSH extension for your IDE to modify the code on the box directly instead of the silly file syncing. I use 'app' syncing though, to easily grab my modules or what have you.
+
+## Additions deets:
+
+`extra/001-env.sh` is set to dump useful things in the vagrant `~/.bashrc`. Add or subtract as you wish.  
+`extra/010-system-packs.sh` is a custom addition of mine, where we install Xdebug 3, it's configuration, SchemaCrawler, and an example script for that.  
+`extra/120-post-build.sh` runs a few magento commands - 2.4.3 requires 2FA, and I don't want to do a mailcatcher dance every spin up so I have this configured to disabled that module, and recompile.  
+
+The `.gitignore` was updated to allow these.  
+
 # Fast Virtual Machine for Magento2
 
 [![vagrant](https://img.shields.io/badge/vagrant-debian:stretch-blue.svg?longCache=true&style=flat&label=vagrant&logo=vagrant)](https://app.vagrantup.com/debian/boxes/stretch64)

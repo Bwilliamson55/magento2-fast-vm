@@ -5,8 +5,6 @@
 /www
 /vagrant-ssh
 /config.yaml
-/extra/001-env.sh
 /extra/100-pre-build.sh
-/extra/120-post-build.sh
 /db-dump.sql.gz
 /.vscode
