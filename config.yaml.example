@@ -5,7 +5,7 @@ vmconf:
   memory: '4096'
   cpus: '2'
   mount: 'nfs'
-  path: 'root'
+  path: 'app'
   provision: 'all'
 composer:
   username: 'magentoUsernameKey'
@@ -24,7 +24,7 @@ magento:
   edition: 'community'
   version: '2.4.3'
   php_version: 'default'
-  sample: 'true'
+  sample: 'false'
   mode: 'developer'
   currency: 'USD'
   language: 'en_US'

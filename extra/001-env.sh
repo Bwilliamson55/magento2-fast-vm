@@ -32,14 +32,14 @@ export VISUAL="$EDITOR"
 #ElasticSearch and Mysql
 alias check-elastic='curl -XGET "localhost:9200/_cluster/health?pretty"'
 alias mysql-root='mysql -h 127.0.0.1 -u root'
-alias mysqldump-magento="mysqldump ${PROJECT_NAME} -u root -p -h 127.0.0.1 | gzip > ~/dbdump/${PROJECT_NAME}_$(date "+%Y-%m-%d_%H%M").sql.gz"
+alias mysqldump-magento="mysqldump ${PROJECT_NAME} -u vagrant -p -h 127.0.0.1 | gzip > ~/dbdump/${PROJECT_NAME}_$(date "+%Y-%m-%d_%H%M").sql.gz"
 
 #zcat a gzip sql file into specified db
 #e.g. restore-db ~/dbdump/myfile.sql.gz magentoDBname
 function restore-db() {
     dbfile=${1:?"The path must be specified."}
     dbname=${2:?"The destination db name must be specified."}   
-    zcat $dbfile | mysql -h 127.0.0.1 -u root -p $dbname
+    zcat $dbfile | mysql -h 127.0.0.1 -u vagrant -p $dbname
 }
 #
 
